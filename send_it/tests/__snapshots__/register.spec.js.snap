@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register ecomponent should render without crashing 1`] = `ShallowWrapper {}`;
+
+exports[`create parcel component should render without crashing 1`] = `ShallowWrapper {}`;
+
+exports[`register component should render without crashing 1`] = `ShallowWrapper {}`;
