@@ -18,15 +18,15 @@ import M from 'materialize-css/dist/js/materialize.js';
        
         (data) => {
             console.log(data)
-          if (data.errors) {
+          if (data.status==="failure") {
              
-            M.toast({html:`invalid request `}),
+            M.toast({html:data.message}),
             dispatch({
               type: CREATE_PARCEL_FAILURE,
               payload: data.errors,
             });
           } else {
-            M.toast({html:`Successfully logged in as `}),
+            M.toast({html:data.message}),
             dispatch({
                 
               type: CREATE_PARCEL_SUCCESS,

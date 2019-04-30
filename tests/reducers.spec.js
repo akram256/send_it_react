@@ -16,7 +16,9 @@ describe('logins a user', () => {
 
                 isSuccessful: false,
                 token: '',
-                errors: null
+                errors: null,
+                isloading: false,
+
 
             }
         );
@@ -27,6 +29,7 @@ describe('logins a user', () => {
         expect(loginReducers([], { type: LOGIN_SUCCESS, token: '' })).toEqual({
             isSuccessful: true,
             token: undefined,
+            isloading: false,
         });
     })
 }
@@ -34,6 +37,7 @@ describe('logins a user', () => {
 it('should update state if there is LOGIN_FAILURE', () => {
     expect(loginReducers([], { type: LOGIN_FAILURE, errors: '' })).toEqual({
         errors: undefined,
+        isloading: false,
     });
 
 });

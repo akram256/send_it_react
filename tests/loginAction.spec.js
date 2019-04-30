@@ -17,7 +17,7 @@ const mockStore = configureMockStore(middlewares);
     );
     const store = mockStore({});
     store.dispatch(loginuser());
-    expect(store.getActions()).toEqual([]);
+    expect(store.getActions()).toEqual([{"type": "IS_LOADING"}]);
 });
 
 });

@@ -20,7 +20,7 @@ export class Register extends Component {
     }
     onSubmit(e) {
         e.preventDefault();
-        this.props.registeruser({ user_name: this.state.user_name, email: this.state.email, password: this.state.password })
+        this.props.registeruser({ user_name: this.state.user_name, email: this.state.email, password: this.state.password }, this.props)
     }
 
     render() {

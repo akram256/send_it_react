@@ -3,6 +3,7 @@ import '../styles/login.css'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import loginuser from '../actions/loginActions'
+import Loader from '../components/loader'
 
 export class Login extends Component {
   constructor(props) {
@@ -61,8 +62,10 @@ export class Login extends Component {
                 <label >Password</label>
                 <input type="password" name="password" value={this.state.password} onChange={this.onChange} min="8" required />
               </div>
+              {this.props.isloading?<Loader/>:null}
               <div className="button">
-                <button type="submit" className="submit">Login</button>
+              
+                <button type="submit" className="submit">{this.props.isloading?"Please wait":"Login"}</button>
               </div>
               <br />
 
@@ -80,6 +83,7 @@ export const mapStateToProps = state => ({
   token: state.loginReducers.token,
   errors: state.loginReducers.errors,
   isSuccessful: state.loginReducers.isSuccessful,
+  isloading: state.loginReducers.isloading
 });
 
 export default connect(mapStateToProps, { loginuser })(Login)

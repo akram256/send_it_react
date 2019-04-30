@@ -1,8 +1,9 @@
-import {LOGIN_SUCCESS, LOGIN_FAILURE} from '../actions/types'
+import {LOGIN_SUCCESS, LOGIN_FAILURE, IS_LOADING} from '../actions/types'
 import M from 'materialize-css/dist/js/materialize.js';
 
+
  const loginuser = (logindata,props) =>(dispatch) => {
-     console.log(logindata)
+      dispatch({type:IS_LOADING})
       return fetch(`https://senditapp3.herokuapp.com/api/v2/auth/login`, {
         method: 'POST',
         headers: {
@@ -15,10 +16,9 @@ import M from 'materialize-css/dist/js/materialize.js';
       ).then(
        
         (data) => {
-            console.log(data)
-          if (data.errors) {
+          if (data.status==="failure") {
              
-            M.toast({html:`invalid request `}),
+            M.toast({html:data.message}),
             dispatch({
               type: LOGIN_FAILURE,
               payload: data.errors,
